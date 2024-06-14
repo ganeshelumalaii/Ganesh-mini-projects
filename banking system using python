@@ -1,0 +1,36 @@
+avail_balance = 1000  # Initial account balance
+max_attempts = 3
+
+for attempt in range(max_attempts):
+    username = input("Username: ")
+    password = input("Password: ")
+
+    if username == "ganesh" and password == "12345678":
+        print("Hi Ganesh, what do you want to do?")
+        print("1. Deposit\n2. Withdraw\n3. Balance Enquiry")
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            deposit_amount = int(input("Enter the deposit amount: "))
+            avail_balance += deposit_amount
+            print("Deposit of", deposit_amount, "is successful.")
+            print("Your balance is", avail_balance)
+            break
+        elif choice == "2":
+            withdraw_amount = int(input("Enter the amount you want to withdraw: "))
+            if withdraw_amount > avail_balance:
+                print("Insufficient balance.")
+            else:
+                avail_balance -= withdraw_amount
+                print("Withdrawal of", withdraw_amount, "is successful.")
+                print("Your balance is", avail_balance)
+            break
+        elif choice == "3":
+            print("Your balance is:", avail_balance)
+            break
+        else:
+            print("Invalid choice.")
+    else:
+        print("Invalid username or password.")
+else:
+    print("Maximum attempts reached. Please try again later.")
